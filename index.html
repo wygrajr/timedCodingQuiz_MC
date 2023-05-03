@@ -5,24 +5,48 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Timed MC Coding Quiz</title>
         <link rel="stylesheet" href="./assets/css/style.css">
+        <title>MC Coding Quiz</title>
     </head>
 
     <body>
         <header>
-            <h6 id="highScores">View High Scores</h6>
-            <h5 id="countdown">Time: </h5>
+            <nav>
+                <button id="highScores">View High Scores!</button> <!--id is for CSS-->
+            </nav>
+
+            <section>
+                <h5 class="countDown">Time: 
+                    <strong><span id="countDown"></span></strong>
+                </h5>
+            </section>
         </header>
 
         <main>
-            <h1>MC Coding Quiz!</h1>
-            <p>This is a multiple choice quiz to help you on your coding journey. You will have 90 seconds to answer all the questions. Each question you get wrong will reduce your time. Buena suerte!</p>
-            <section id="quiz">
+            <section id="intro"></section>
+                <h1>MC Coding Quiz!</h1>
+                <p>This is a multiple choice quiz to help you on your coding journey. You will have 90 seconds to answer all the questions. Each question you get wrong will reduce your time. Buena suerte!</p>
                 <button id="start">Start Here!</button>
             </section>
+
+            <section id="quiz">
+                <h2 id="questions"></h2>
+                <div id="choices"></div>
+            </section>
+
+            <section>
+                <h2>All Done!</h2>
+                <p>Final score: <span id="score"></span></p>
+                <p>Enter your initials: <input type="text" id="name" max="3">
+                    <button id="submit">Submit</button>
+                </p>
+            </section>
+
+            <section id="result"></section>
         </main>
 
         <footer>
-
+            <h3>Made by WyCreations</h3>
+            <p>&copy; 2023 WyCreations</p>
         </footer>
 	    <script src="./assets/js/script.js"></script>
     </body>

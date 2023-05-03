@@ -3,19 +3,19 @@ var questionsAndAnswers=[ //<--- Array of Objects
     {
         question: "What does [] always denote in Javascript?",
         choices: ["object","function","array","event"],
-        answer: "array"
+        answer: 2 //<--- can call by array position
     },
 
     {
         question: "What Element is used to wrtie CSS & Javascript in HTML?",
         choices: ["<meta>","<head>","<footer>","<script>"],
-        answer: "<script>"
+        answer: 3
     },
 
     {
         question: "What is setInterval()?",
         choices: ["funtion","variable","object","event"],
-        answer: "function"
+        answer: 0
     },
 ]
 //2. The timer begins to countdown when I start the quiz
