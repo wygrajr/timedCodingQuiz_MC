@@ -29,6 +29,20 @@ var initals = document.querySelector("#name");
 var results = document.querySelector("#result");
 
 //2. The timer begins to countdown when I start the quiz
+
+var currentQuestionIndex = 0;
+var time = questions.length * 15;
+var timerId;
+
+function quizStart() {
+    timerId = setInterval(clockTick, 1000);
+    countDown.textContent = time;
+    var intro = document.getElementById("intro");
+    intro.setAttribute("class", "hide");
+    quizContainer.removeAttribute("class");
+    quiz();
+}
+
 //3. When I select the correct answer, I move on to the next one, but when I select a wrong answer, time is also reduced from the countdown
 //4. The quiz ends when I answer all the questions or time reaches 0
 //5. I can enter my initals and save my score at the end of the quiz
