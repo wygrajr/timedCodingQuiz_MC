@@ -18,6 +18,16 @@ var questionsAndAnswers=[ //<--- Array of Objects
         answer: 0
     },
 ]
+
+// Turn IDs into varables to manipulate in functions
+var quizContainer = document.querySelector("#quiz");
+var countDown = document.querySelector("#countDown");
+var multipleChoices = document.querySelector("#choices");
+var submitButton = document.querySelector("#submit");
+var startButton = document.querySelector("#start");
+var initals = document.querySelector("#name");
+var results = document.querySelector("#result");
+
 //2. The timer begins to countdown when I start the quiz
 //3. When I select the correct answer, I move on to the next one, but when I select a wrong answer, time is also reduced from the countdown
 //4. The quiz ends when I answer all the questions or time reaches 0
