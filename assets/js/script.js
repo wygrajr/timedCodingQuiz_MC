@@ -78,12 +78,27 @@ function questionLoop() {
     }, 2000);
     currentQuestionIndex++;
     if (currentQuestionIndex === questionsAndAnswers.length) {
-      quizEnd();
+      quizFinal();
     } else {
       quiz();
     }
 }
 //4. The quiz ends when I answer all the questions or time reaches 0
 
+function quizFinal() {
+    clearInterval(timerId);
+    var final = document.getElementById("quizFinal");
+    final.removeAttribute("class");
+    var finalScore = document.getElementById("score");
+    finalScore.textContent = time;
+    quizContainer.setAttribute("class", "hide");
+}
 
+function clockTick() {
+    time--;
+    timerEl.textContent = time;
+    if (time <= 0) {
+      quizFinal();
+    }
+}
 //5. I can enter my initals and save my score at the end of the quiz
