@@ -20,13 +20,28 @@ var questionsAndAnswers=[ //<--- Array of Objects
 ]
 
 // Turn IDs into varables to manipulate in functions
-var quizContainer = document.querySelector("#quiz");
-var countDown = document.querySelector("#countDown");
-var multipleChoices = document.querySelector("#choices");
-var submitButton = document.querySelector("#submit");
-var startButton = document.querySelector("#start");
-var initals = document.querySelector("#name");
-var reaction = document.querySelector("#quizReaction");
+var top = document.getElementId("#top");
+var hs = document.getElementId("#hs");
+var highScores = document.getElementId("#highScores");
+var countDown = document.getElementId("#countDown");
+var penalty = document.getElementId("#penalty");
+var intro = document.getElementId("#intro");
+var start = document.getElementId("#start");
+var quiz = document.getElementId("#quiz");
+var questions = document.getElementId("#questions");
+var question = document.getElementId("#question");
+var choices = document.getElementId("#choices");
+var choices1 = document.getElementId("#choices1");
+var choices2 = document.getElementId("#choices2");
+var choices3 = document.getElementId("#choices3");
+var choices4 = document.getElementId("#choices4");
+var score = document.getElementId("#score");
+var outcome = document.getElementId("#outcome");
+var submitScore = document.getElementId("#submitScore");
+var initials = document.getElementId("#initials");
+var names = document.getElementId("#name");
+var submit = document.getElementId("#submit");
+
 
 //2. The timer begins to countdown when I start the quiz
 
