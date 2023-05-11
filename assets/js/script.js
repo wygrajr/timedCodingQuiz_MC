@@ -76,6 +76,10 @@ function startTimer(){
     setInterval(function(){
       countDown.textContent=Math.floor(timeLeft/10)+"secs";
       timeLeft--;
+      if (timeLeft===0){
+        scoreScreen()
+        clearInterval(timeInterval);
+      }
     },100);
 }
 
@@ -105,9 +109,12 @@ startScreen();
 start.addEventListener("click", beginQuiz); // <--- Activates button
 
 //3. When I select the correct answer, I move on to the next one, but when I select a wrong answer, time is also reduced from the countdown
+
+//4. The quiz ends when I answer all the questions or time reaches 0
 function nextQuestion(){
   questionsAndAnswers.splice(activeQuestion,1);
   if (questionsAndAnswers.length===0){
+    scoreScreen()
     clearInterval(timeInterval);
     countDown.textContent = "";
   } else {
@@ -173,11 +180,17 @@ function option4(){
   nextQuestion();
 }
 
+function scoreScreen(){
+  onTop.style.display="block";
+  hs.style.display="none";
+  intro.style.display="none";
+  quiz.style.display="none";
+  submitScore.style.display="block";
+}
+
 choice1.addEventListener("click", option1)
 choice2.addEventListener("click", option2)
 choice3.addEventListener("click", option3)
 choice4.addEventListener("click", option4)
-
-//4. The quiz ends when I answer all the questions or time reaches 0
 
 //5. I can enter my initals and save my score at the end of the quiz
