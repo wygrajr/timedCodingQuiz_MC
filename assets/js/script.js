@@ -31,10 +31,10 @@ var quiz = document.getElementById("quiz");
 var questions = document.getElementById("questions");
 var question = document.getElementById("question");
 var choices = document.getElementById("choices");
-var choices1 = document.getElementById("choices1");
-var choices2 = document.getElementById("choices2");
-var choices3 = document.getElementById("choices3");
-var choices4 = document.getElementById("choices4");
+var choice1 = document.getElementById("choice1");
+var choice2 = document.getElementById("choice2");
+var choice3 = document.getElementById("choice3");
+var choice4 = document.getElementById("choice4");
 var score = document.getElementById("score");
 var outcome = document.getElementById("outcome");
 var submitScore = document.getElementById("submitScore");
@@ -89,15 +89,15 @@ function questionList(){
   activeQuestion=Math.floor(ranQuestRange);
 
   question.textContent=questionsAndAnswers[activeQuestion].question;
-  choices1.textContent=questionsAndAnswers[activeQuestion].choices[0];
-  choices2.textContent=questionsAndAnswers[activeQuestion].choices[1];
-  choices3.textContent=questionsAndAnswers[activeQuestion].choices[2];
-  choices4.textContent=questionsAndAnswers[activeQuestion].choices[3];
+  choice1.textContent=questionsAndAnswers[activeQuestion].choices[0];
+  choice2.textContent=questionsAndAnswers[activeQuestion].choices[1];
+  choice3.textContent=questionsAndAnswers[activeQuestion].choices[2];
+  choice4.textContent=questionsAndAnswers[activeQuestion].choices[3];
 
-  choices1.style.display="block";
-  choices2.style.display="block";
-  choices3.style.display="block";
-  choices4.style.display="block";
+  choice1.style.display="block";
+  choice2.style.display="block";
+  choice3.style.display="block";
+  choice4.style.display="block";
 }
 //4. The quiz ends when I answer all the questions or time reaches 0
 
