@@ -1,0 +1,33 @@
+*{
+    background-color: coral;
+    color: blanchedalmond;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header{
+    display: flexbox;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+}
+
+#hs{
+    display: inline;
+    float: left;
+}
+
+#countDown{
+    display: inline;
+    float: right;
+    padding-right: 10px;
+}
+
+#penalty{
+    color: firebrick;
+    float: right;
+    visibility: hidden;
+}
+
