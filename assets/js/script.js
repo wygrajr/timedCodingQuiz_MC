@@ -20,100 +20,65 @@ var questionsAndAnswers=[ //<--- Array of Objects
 ]
 
 // Turn IDs into varables to manipulate in functions
-var top = document.getElementId("#top");
-var hs = document.getElementId("#hs");
-var highScores = document.getElementId("#highScores");
-var countDown = document.getElementId("#countDown");
-var penalty = document.getElementId("#penalty");
-var intro = document.getElementId("#intro");
-var start = document.getElementId("#start");
-var quiz = document.getElementId("#quiz");
-var questions = document.getElementId("#questions");
-var question = document.getElementId("#question");
-var choices = document.getElementId("#choices");
-var choices1 = document.getElementId("#choices1");
-var choices2 = document.getElementId("#choices2");
-var choices3 = document.getElementId("#choices3");
-var choices4 = document.getElementId("#choices4");
-var score = document.getElementId("#score");
-var outcome = document.getElementId("#outcome");
-var submitScore = document.getElementId("#submitScore");
-var initials = document.getElementId("#initials");
-var names = document.getElementId("#name");
-var submit = document.getElementId("#submit");
+var onTop = document.getElementById("onTop");
+var hs = document.getElementById("hs");
+var highScores = document.getElementById("highScores");
+var countDown = document.getElementById("countDown");
+var penalty = document.getElementById("penalty");
+var intro = document.getElementById("intro");
+var start = document.getElementById("start");
+var quiz = document.getElementById("quiz");
+var questions = document.getElementById("questions");
+var question = document.getElementById("question");
+var choices = document.getElementById("choices");
+var choices1 = document.getElementById("choices1");
+var choices2 = document.getElementById("choices2");
+var choices3 = document.getElementById("choices3");
+var choices4 = document.getElementById("choices4");
+var score = document.getElementById("score");
+var outcome = document.getElementById("outcome");
+var submitScore = document.getElementById("submitScore");
+var initials = document.getElementById("initials");
+var names = document.getElementById("name");
+var submit = document.getElementById("submit");
 
 
-//2. The timer begins to countdown when I start the quiz
+//2. The timer begins to countdown when user starts the quiz
+var timeInterval;
+var timeLeft;
 
-var currentQuestionIndex = 0;
-var time = questions.length * 15;
-var timerId;
-
-function quizStart() {
-    timerId = setInterval(clockTick, 1000);
-    countDown.textContent = time;
-    var intro = document.getElementById("intro");
-    intro.setAttribute("class", "hide");
-    quizContainer.removeAttribute("class");
-    quiz();
+function startTimer(){
+  timeLeft=900
+  timeInterval=
+    setInterval(function(){
+      countDown.textContent=Math.floor(timeLeft/10)+"secs";
+      timeLeft--;
+    },100);
 }
 
+function startScreen(){
+  onTop.style.display="block";
+  hs.style.display="block";
+  intro.style.display="block";
+  quiz.style.display="none";
+  submitScore.style.display="none";
+  countDown.style.display="90secs";
+}
+
+function beginQuiz(){
+  startTimer();
+  onTop.style.display="block";
+  hs.style.display="none";
+  intro.style.display="none";
+  quiz.style.display="block";
+  submitScore.style.display="none";
+}
+
+startScreen();
+
+start.addEventListener("click", beginQuiz);
 //3. When I select the correct answer, I move on to the next one, but when I select a wrong answer, time is also reduced from the countdown
 
-function quiz() {
-    var currentQuestion = questionsAndAnswers[currentQuestionIndex];
-  var promptEl = document.getElementById("questions")
-    promptEl.textContent = currentQuestion.prompt;
-    choicesEl.innerHTML = "";
-    currentQuestion.options.forEach(function(choice, i) {
-        var choiceButton = document.createElement("button");
-        choiceButton.setAttribute("value", choice);
-        choiceButton.textContent = i + 1 + ". " + choice;
-        choiceButton.onclick = questionLoop;
-        multipleChoices.appendChild(choiceButton);
-    });
-}
-
-function questionLoop() {
-    if (this.value !== questionsAndAnswers[currentQuestionIndex].answer) {
-      time -= 10;
-      if (time < 0) {
-        time = 0;
-      }
-      countDown.textContent = time;
-      reaction.textContent = `Wrong! The correct answer was ${questionsAndAnswers[currentQuestionIndex].answer}.`;
-      reaction.style.color = "red";
-    } else {
-        reaction.textContent = "Correct!";
-        reaction.style.color = "green";
-    }
-    reaction.setAttribute("class", "reaction");
-    setTimeout(function() {
-        reaction.setAttribute("class", "reaction hide");
-    }, 2000);
-    currentQuestionIndex++;
-    if (currentQuestionIndex === questionsAndAnswers.length) {
-      quizFinal();
-    } else {
-      quiz();
-    }
-}
 //4. The quiz ends when I answer all the questions or time reaches 0
 
-function quizFinal() {
-    clearInterval(timerId);
-    var final = document.getElementById("quizFinal");
-    final.removeAttribute("class");
-    var finalScore = document.getElementById("score");
-    finalScore.textContent = time;
-    quizContainer.setAttribute("class", "hide");
-}
-
-function clockTick() {
-    time--;
-    timerEl.textContent = time;
-    if (time <= 0) {
-      quizFinal();
-    }
-}
 //5. I can enter my initals and save my score at the end of the quiz
