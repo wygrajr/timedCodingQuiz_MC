@@ -180,12 +180,21 @@ function option4(){
   nextQuestion();
 }
 
+function finalScore(){
+  if (timeLeft===0){
+    score.textContent = 0;
+  } else {
+    score.textContent = timeLeft;
+  }
+}
+
 function scoreScreen(){
   onTop.style.display="block";
   hs.style.display="none";
   intro.style.display="none";
   quiz.style.display="none";
   submitScore.style.display="block";
+  finalScore();
 }
 
 choice1.addEventListener("click", option1)
