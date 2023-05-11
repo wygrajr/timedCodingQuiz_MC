@@ -31,3 +31,35 @@ header{
     visibility: hidden;
 }
 
+#highScores{
+    color: khaki;
+    background-color: purple;
+}
+
+#intro, #quiz, #submitScore{
+    text-align: center;
+}
+
+#start{
+    color: khaki;
+    background-color: purple;
+}
+
+#quiz button{
+    color: khaki;
+    background-color: purple;
+}
+
+#outcome{
+    text-align: center;
+    color: cyan;
+    background-color: darkgray;
+}
+
+footer{
+    display: flexbox;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}

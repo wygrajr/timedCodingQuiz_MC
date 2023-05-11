@@ -7,7 +7,7 @@ var questionsAndAnswers=[ //<--- Array of Objects
     },
 
     {
-        question: "What Element is used to wrtie CSS & Javascript in HTML?",
+        question: "What Element is used to write CSS & Javascript in HTML?",
         choices: ["<meta>","<head>","<footer>","<script>"],
         answer: 3
     },
