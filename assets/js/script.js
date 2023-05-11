@@ -42,8 +42,31 @@ var initials = document.getElementById("initials");
 var names = document.getElementById("name");
 var submit = document.getElementById("submit");
 
+// Get questions with choices to show when the start button is clicked on
+
+var activeQuestion=0;
+
+function questionList(){
+  var randomQuestion=Math.random();
+  var ranQuestMax=randomQuestion*questionsAndAnswers.length;
+  var ranQuestRange=0+ranQuestMax;
+  activeQuestion=Math.floor(ranQuestRange);
+
+  question.textContent=questionsAndAnswers[activeQuestion].question;
+  choice1.textContent=questionsAndAnswers[activeQuestion].choices[0];
+  choice2.textContent=questionsAndAnswers[activeQuestion].choices[1];
+  choice3.textContent=questionsAndAnswers[activeQuestion].choices[2];
+  choice4.textContent=questionsAndAnswers[activeQuestion].choices[3];
+
+  choice1.style.display="block";
+  choice2.style.display="block";
+  choice3.style.display="block";
+  choice4.style.display="block";
+}
 
 //2. The timer begins to countdown when user starts the quiz
+
+//Timer starts when quiz begins
 var timeInterval;
 var timeLeft;
 
@@ -65,6 +88,7 @@ function startScreen(){
   countDown.style.display="90secs";
 }
 
+// Starts quiz and calls for timer + questions to start
 function beginQuiz(){
   startTimer();
   onTop.style.display="block";
@@ -78,27 +102,82 @@ function beginQuiz(){
 
 startScreen();
 
-start.addEventListener("click", beginQuiz);
+start.addEventListener("click", beginQuiz); // <--- Activates button
+
 //3. When I select the correct answer, I move on to the next one, but when I select a wrong answer, time is also reduced from the countdown
-var activeQuestion=0;
-
-function questionList(){
-  var randomQuestion=Math.random();
-  var ranQuestMax=randomQuestion*questionsAndAnswers.length;
-  var ranQuestRange=0+ranQuestMax;
-  activeQuestion=Math.floor(ranQuestRange);
-
-  question.textContent=questionsAndAnswers[activeQuestion].question;
-  choice1.textContent=questionsAndAnswers[activeQuestion].choices[0];
-  choice2.textContent=questionsAndAnswers[activeQuestion].choices[1];
-  choice3.textContent=questionsAndAnswers[activeQuestion].choices[2];
-  choice4.textContent=questionsAndAnswers[activeQuestion].choices[3];
-
-  choice1.style.display="block";
-  choice2.style.display="block";
-  choice3.style.display="block";
-  choice4.style.display="block";
+function nextQuestion(){
+  questionsAndAnswers.splice(activeQuestion,1);
+  if (questionsAndAnswers.length===0){
+    clearInterval(timeInterval);
+    countDown.textContent = "";
+  } else {
+    questionList();
+  }
 }
+
+function correct(){
+  outcome.textContent="Nice Job!"
+  var tryTimer=setTimeout(function() {
+    outcome.textContent="";
+    clearTimeout(tryTimer);
+  }, 1000)
+}
+
+function incorrect(){
+  outcome.textContent="X"
+  penalty.style.visibility="visible";
+  var tryTimer=setTimeout(function() {
+    outcome.textContent="";
+    penalty.style.visibility="hidden"
+    clearTimeout(tryTimer);
+  }, 1000)
+}
+
+function option1(){
+  if (questionsAndAnswers[activeQuestion].answer===0){
+    correct();
+  } else{
+    timeLeft = timeLeft-100;
+    incorrect();
+  }
+  nextQuestion();
+}
+
+function option2(){
+  if (questionsAndAnswers[activeQuestion].answer===1){
+    correct();
+  } else{
+    timeLeft = timeLeft-100;
+    incorrect();
+  }
+  nextQuestion();
+}
+
+function option3(){
+  if (questionsAndAnswers[activeQuestion].answer===2){
+    correct();
+  } else{
+    timeLeft = timeLeft-100;
+    incorrect();
+  }
+  nextQuestion();
+}
+
+function option4(){
+  if (questionsAndAnswers[activeQuestion].answer===3){
+    correct();
+  } else{
+    timeLeft = timeLeft-100;
+    incorrect();
+  }
+  nextQuestion();
+}
+
+choice1.addEventListener("click", option1)
+choice2.addEventListener("click", option2)
+choice3.addEventListener("click", option3)
+choice4.addEventListener("click", option4)
+
 //4. The quiz ends when I answer all the questions or time reaches 0
 
 //5. I can enter my initals and save my score at the end of the quiz
